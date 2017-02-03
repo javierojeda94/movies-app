@@ -1,19 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @movie.name %>
-</p>
-
-<p>
-  <strong>Director:</strong>
-  <%= @movie.director %>
-</p>
-
-<p>
-  <strong>Synopsis:</strong>
-  <%= @movie.synopsis %>
-</p>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<div class="row">
+  <div class="col-md-6">
+    <h1><%= @movie.name %></h1>
+    <small>Directed by: <%= @movie.director %></small>
+  </div>
+  <div class="col-md-6">
+    <h2>Synopsis</h2>
+    <%= @movie.synopsis %>
+  </div>
+</div>
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_movie_path(@movie) %></button>
+  <button type="button" class="btn btn-default"><%= link_to 'Back', movies_path %></button>
+</div>
