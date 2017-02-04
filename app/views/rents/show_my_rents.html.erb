@@ -7,9 +7,9 @@
     <% quantity = rent[1] %>
     <% rent = rent[0] %>
     <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail">
-        <img src="..." alt="...">
-      </a>
+      <%= link_to rent, class: 'thumbnail' do %>
+        <%= image_tag rent.poster.url(:medium) %>
+      <% end %>
       <span>
         <h4><%= rent.name %></h4>
         <small><%= quantity %> unities</small> 
