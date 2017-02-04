@@ -1,28 +1,19 @@
-<p id="notice"><%= notice %></p>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="col-md-6">
-      <%= image_tag @movie.poster.url(:medium) %>
-    </div>
-    <div class="col-md-6 text-center">
-      <h1><%= @movie.name %></h1>
-      <div class="row">
-        <div class="col-md-12">
-          <p>Directed by: <%= @movie.director %></p>                
-        </div>
-        <div class="col-md-12">
-          <p>Available for rent: <%= @movie.stock %></p>                
-        </div>
-      </div>
-    </div>
+<div class='row'>
+  <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0'>
+    <h1><%= @movie.name %></h1>
+    <p><strong>Director:</strong> <%= @movie.director %></p>
+    <p class='text-<%= @text_class %>'><strong>Stock:</strong> There are <%= @movie.stock %> units available for rent.</p>    
+    <p class='text-justify'><%= @movie.synopsis %><p>
   </div>
-  <div class="col-md-6">
-    <h2>Synopsis</h2>
-    <%= @movie.synopsis %>
+  <div class='col-xs-12 col-sm-12 col-md-4 text-center'>
+    <%= image_tag @movie.poster.url(:medium) %>
   </div>
 </div>
-<div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_movie_path(@movie) %></button>
-  <button type="button" class="btn btn-default"><%= link_to 'Back', movies_path %></button>
+<div class='row'>
+  <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-0'>
+    <div class='actions btn-group' role='group' aria-label='...'>
+      <%= link_to 'Edit', edit_movie_path(@movie), class: 'btn btn-primary' %>
+      <%= link_to 'Back', movies_path, class: 'btn btn-default' %>
+    </div>
+  </div>
 </div>

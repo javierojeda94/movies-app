@@ -1,20 +1,20 @@
-<table class="table table-hover">
+<table class='table table-hover'>
 <thead>
-  <th class="text-center">Name</th>
-  <th class="text-center">Available</th>
+  <th class='text-center'>Name</th>
+  <th class='text-center'>Available</th>
   <th colspan=1></th>
 </thead>
 <tbody>
 <% @available_movies.each do |movie| %>
   <tr>
-    <td class="text-center">
+    <td class='text-center'>
       <%= movie.name %>
     </td>
-    <td class="text-center">
+    <td class='text-center'>
       <%= movie.stock %>
     </td>
-    <td class="text-center">
-      <button class="btn btn-primary" onclick="rent_movie(<%= movie.id %>)">Rent!</button>   
+    <td class='text-center'>
+      <button class='btn btn-primary' onclick='rent_movie(<%= movie.id %>)'>Rent!</button>   
     </td>
   </tr>
 <% end %>

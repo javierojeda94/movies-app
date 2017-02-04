@@ -1,17 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Movies</h1>
-<div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default"><%= link_to 'New Movie', new_movie_path, class: 'link-unstyled' %></button>
-  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#rent_a_movie_modal">Rent a Movie</button>
-  <button type="button" class="btn btn-default"><%= link_to 'My Rents', my_rents_path, class: 'link-unstyled' %></button>
+<div class='btn-group' role='group' aria-label='...'>
+  <button type='button' class='btn btn-default'><%= link_to 'New Movie', new_movie_path, class: 'link-unstyled' %></button>
+  <button type='button' class='btn btn-default' data-toggle='modal' data-target='#rent_a_movie_modal'>Rent a Movie</button>
+  <button type='button' class='btn btn-default'><%= link_to 'My Rents', my_rents_path, class: 'link-unstyled' %></button>
 </div>
-<table class="table text-center">
+<table class='table text-center'>
   <thead>
     <tr>
-      <th class="text-center">Name</th>
-      <th class="text-center">Director</th>
-      <th class="text-center" colspan="2">Options</th>
+      <th class='text-center'>Name</th>
+      <th class='text-center hidden-xs'>Director</th>
+      <th class='text-center visible-md visible-lg'>Stock</th>
+      <th class='text-center' colspan='2'>Options</th>
     </tr>
   </thead>
 
@@ -19,7 +18,8 @@
     <% @movies.each do |movie| %>
       <tr>
         <td><%= movie.name %></td>
-        <td><%= movie.director %></td>
+        <td class='hidden-xs'><%= movie.director %></td>
+        <td class='visible-md visible-lg'><%= movie.stock %></td>
         <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
         <!--

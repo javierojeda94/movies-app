@@ -10,6 +10,13 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    if @movie.stock >= 10
+      @text_class = 'success'
+    elsif @movie.stock < 10 && @movie.stock > 5
+      @text_class = 'warning'
+    else
+      @text_class = 'danger'
+    end
   end
 
   # GET /movies/new
