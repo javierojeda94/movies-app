@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy, :make_a_rent]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :create_a_rent]
   before_action :authenticate_user!
   # GET /movies
   # GET /movies.json
@@ -68,14 +68,14 @@ class MoviesController < ApplicationController
     end
   end
 
-  def rents
+  def make_a_rent
     @available_movies = Movie.available
     respond_to do |format|
       format.js
     end
   end
 
-  def make_a_rent
+  def create_a_rent
     ran = rand(1..100)
     if ran > 50
       @rent = Rent.new(user_id: current_user.id, movie_id: @movie.id, rent_date: Time.now)
@@ -83,7 +83,7 @@ class MoviesController < ApplicationController
         @movie.stock -= 1
         if @movie.save
           @message = '¡The rent is done!'
-          @status = 202
+          @status = 201
         else
           @errors = @movie.errors
         end
@@ -92,7 +92,7 @@ class MoviesController < ApplicationController
       end
     else
       @message = '¡You can not rent now because you have balance to pay'
-      @status = 500
+      @status = 401
       respond_to do |format|
         format.js
       end

@@ -1,5 +1,5 @@
 let message_class = '';
-if (<%= @status %> == 202){
+if (<%= @status %> == <%= 201 %>){
   $('#rent_a_movie_modal').modal('hide');
   message_class = 'text-success';
 }else{

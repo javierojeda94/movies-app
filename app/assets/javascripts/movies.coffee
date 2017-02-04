@@ -4,8 +4,10 @@
 
 $(document).ready ->
   $('#rent_a_movie_modal').on 'show.bs.modal', (event) -> 
-    $.ajax(url: "/rents")
+    $.ajax(url: "/rent_a_movie")
 
 root = exports ? this
 root.rent_movie = (movie_id) ->
-  $.ajax(url: "/rent_a_movie/#{movie_id}")
+  $.ajax(url: "/rent_a_movie", type: 'post', data: {
+    id: movie_id
+  })
