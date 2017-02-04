@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  has_many :rents
+  has_many :rents, dependent: :restrict_with_error
   has_many :users, through: :rents
 
   scope :available, -> { where('stock > 0') }
@@ -10,7 +10,8 @@ class Movie < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :director
   validates_presence_of :synopsis
-  validates_presence_of :stock
   validates_attachment_presence :poster
+
+  validates :stock, :numericality => { :greater_than_or_equal_to => 0 }, :presence => true
 
 end
