@@ -1,0 +1,10 @@
+let message_class = '';
+if (<%= @status %> == 202){
+  $('#rent_a_movie_modal').modal('hide');
+  message_class = 'text-success';
+}else{
+  message_class = 'text-danger';
+}
+$('#rent_response_modal').find('.modal-body #message').attr('class',message_class);
+$('#rent_response_modal').find('.modal-body #message').text('<%= @message %>');
+$('#rent_response_modal').modal('show');

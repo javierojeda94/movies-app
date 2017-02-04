@@ -13,3 +13,18 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.link-unstyled {
+  &,
+  &:visited,
+  &:hover,
+  &:active,
+  &:focus,
+  &:active:hover {
+    color: inherit;
+    background-color: transparent;
+    font-size: inherit;
+    text-decoration: none;
+    font-family: inherit;
+  }
+}

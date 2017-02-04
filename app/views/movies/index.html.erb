@@ -2,10 +2,9 @@
 
 <h1>Movies</h1>
 <div class="btn-group" role="group" aria-label="...">
-  <button type="button" class="btn btn-default"><%= link_to 'New Movie', new_movie_path %></button>
-  <button type="button" class="btn btn-default"><%= link_to 'Rent a Movie' %></button>
+  <button type="button" class="btn btn-default"><%= link_to 'New Movie', new_movie_path, class: 'link-unstyled' %></button>
+  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#rent_a_movie_modal">Rent a Movie</button>
 </div>
-
 <table class="table text-center">
   <thead>
     <tr>
@@ -29,3 +28,6 @@
     <% end %>
   </tbody>
 </table>
+
+<%= render 'rent_a_movie' %>
+<%= render 'rent_response' %>

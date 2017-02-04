@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy, :make_a_rent]
   before_action :authenticate_user!
   # GET /movies
   # GET /movies.json
@@ -61,6 +61,37 @@ class MoviesController < ApplicationController
     end
   end
 
+  def rents
+    @available_movies = Movie.available
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def make_a_rent
+    ran = rand(1..100)
+    if ran > 50
+      @rent = Rent.new(user_id: current_user.id, movie_id: @movie.id, rent_date: Time.now)
+      if @rent.save
+        @movie.stock -= 1
+        if @movie.save
+          @message = '¡The rent is done!'
+          @status = 202
+        else
+          @errors = @movie.errors
+        end
+      else
+        @errors = @rent.errors
+      end
+    else
+      @message = '¡You can not rent now because you have balance to pay'
+      @status = 500
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
@@ -69,6 +100,6 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:name, :director, :synopsis)
+      params.require(:movie).permit(:name, :director, :synopsis, :stock)
     end
 end
