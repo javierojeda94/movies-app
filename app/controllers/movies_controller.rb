@@ -38,7 +38,6 @@ class MoviesController < ApplicationController
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
       else
-        byebug
         format.html { render :new }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
